@@ -1,0 +1,23 @@
+name: Firebase CD
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # install flutter
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'master'
+      # build app
+      - run: flutter build web
+      # Deploy
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GITHUBACTIONSTEST_E99AE }}'
+          projectId: githubactionstest-e99ae
