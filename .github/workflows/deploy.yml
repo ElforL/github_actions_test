@@ -6,16 +6,19 @@ on:
 
 jobs:
   build:
-    name: Build flutter app 🏗 
+    name: Build and deploy 🚀
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout 🛎
+        uses: actions/checkout@v2
       # install flutter
+      - name: Install Flutter ⬇
       - uses: subosito/flutter-action@v1
         with:
           channel: 'master'
       # build app
-      - run: flutter build web
+      - name: Build flutter app 🏗 
+        run: flutter build web
       # Firebase
       - name: Deploy to firebase 🔥 
         uses: FirebaseExtended/action-hosting-deploy@v0
