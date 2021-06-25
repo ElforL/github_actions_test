@@ -32,7 +32,7 @@ jobs:
   deploy_to_github:
     name: Deploy to Github 🐱‍👤
     needs: build
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
