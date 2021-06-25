@@ -16,25 +16,16 @@ jobs:
           channel: 'master'
       # build app
       - run: flutter build web
-      
-  deploy_to_firebase:
-    name: Deploy to firebase 🔥 
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      # Firebase
+      - name: Deploy to firebase 🔥 
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GITHUBACTIONSTEST_E99AE }}'
           projectId: githubactionstest-e99ae
           channelId: live
-
-  deploy_to_github:
-    name: Deploy to Github 🐱‍👤
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy 🚀
+      # Github
+      - name: Deploy to Github 🐱‍👤
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: docs # The branch the action should deploy to.
