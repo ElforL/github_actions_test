@@ -12,24 +12,5 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@v2
       # install flutter
-      - name: Install Flutter 💙
-        uses: subosito/flutter-action@v1
-        with:
-          channel: 'master'
-      # build app
-      - name: Build flutter app 🏗 
-        run: flutter build web
-      # Github
-      - name: Deploy to Github 🐱‍👤
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: build # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
-      # Firebase
-      - name: Deploy to firebase 🔥 
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GITHUBACTIONSTEST_E99AE }}'
-          projectId: githubactionstest-e99ae
-          channelId: live
+      - name: Run script
+        run: sh s.sh
